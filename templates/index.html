@@ -17,9 +17,9 @@
     
         <main>
             <div>
-                {% for news in popular_news.hits %}
+                {% for news in json_req.hits %}
                 <div>
-                    <a href="{{news.title}}">
+                    <a href="{{news.objectID}}">
                         <h3>{{news.title}}</h3>
                     </a>
                     {% if news.url == None %}

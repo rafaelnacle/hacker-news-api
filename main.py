@@ -1,5 +1,6 @@
 import requests
 from flask import Flask, render_template, request, redirect
+import json
 
 app = Flask("HackerNews")
 
@@ -21,7 +22,14 @@ def home():
         
         return render_template('index.html', json_req=json_req)
     
+@app.route('/<id>')
+def get_by_id(id):
+  
+    article_id = f"http://hn.algolia.com/api/v1/items/{id}"
+    article_id_req = requests.get(article_id).json()
 
+        
+    return render_template('id.html', article=article_id_req)
 
 
 app.run(host="0.0.0.0")
