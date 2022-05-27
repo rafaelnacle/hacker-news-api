@@ -17,10 +17,18 @@
             <div>
                 {% autoescape false %}
                     {% for comment in article.children %}
-                        <<p><strong>{{comment.author|safe}}</strong></p>
-                        <p>{{comment.text|safe}}</p>
-                        <p>{{comment.url|safe}}</p>
+                        {% if not comment.author == None %}
+                            <p><strong>{{comment.author|safe}}</strong></p>
+                        {% endif %}
+                        {% if not comment.text == None %}
+                            <p>{{comment.text|safe}}</p>
+                        {% endif %}
+                        {% if not comment.url == None %}
+                            <p><a href="{{comment.url}}">{{comment.url|safe}}</a></p>
+                        {% endif %}
+                          
                         <hr />
+                        
                     {% endfor %}
                 {% endautoescape %}
             </div>
