@@ -10,16 +10,16 @@
             <h1>Marathon News</h1>
             <div>
                 <span>Order by: </span>
-                <a href="/?order_by=popular">Popular</a> |
-                <a href="/?order_by=popular">New</a>      
+                <a id="popular" href="/?order_by=popular">Popular</a> |
+                <a id="new" href="/?order_by=new">New</a>      
             </div>
         </header>
     
         <main>
             <div>
-                {% for news in recent_news.hits %}
+                {% for news in popular_news.hits %}
                 <div>
-                    <a href="#">
+                    <a href="{{news.title}}">
                         <h3>{{news.title}}</h3>
                     </a>
                     {% if news.url == None %}
@@ -28,6 +28,7 @@
                         <span>(<a href="{{news.url}}" target="_blank">{{news.url}}</a>)</span>
                     {% endif %}
                 </div>
+                
                 <div>
                    <p>{{news.points}} Point(s) | By: {{news.author}} | {{news.num_comments}} Comments</p> 
                 </div>
