@@ -7,14 +7,15 @@
     
     <body>
         <header>
-                 
+            <a href="/">← Home</a>    
             <h1>{{article.title}}</h1>
             <div>
-              {{article.points}} Points | By: {{article.author}} | <a href="{{article.url}}" target="_blank">{{article.url}}</a> | <a href="/">Home</a>
+              {{article.points}} Points | By: <strong>{{article.author}}</strong> | <a href="{{article.url}}" target="_blank">{{article.url}}</a>
             </div>
         </header>
         <main>
             <div>
+                <h2>Comments</h2>
                 {% autoescape false %}
                     {% for comment in article.children %}
                         {% if not comment.author == None %}
@@ -32,7 +33,6 @@
                     {% endfor %}
                 {% endautoescape %}
             </div>
-        <hr />
         </main>
     </body>
 </html>
