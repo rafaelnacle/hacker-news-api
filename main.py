@@ -33,5 +33,3 @@ def get_by_id(id):
 
 
 app.run(host="0.0.0.0")
-
-

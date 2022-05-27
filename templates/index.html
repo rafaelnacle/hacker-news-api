@@ -2,7 +2,7 @@
 <html>
     <head>
     	<title>Marathon News</title>
-        <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+        <link rel="stylesheet" href="https://unpkg.com/mvp.css"></link> 
     </head>
     
     <body>
@@ -10,14 +10,15 @@
             <h1>Marathon News</h1>
             <div>
                 <span>Order by: </span>
-                <a id="popular" href="/?order_by=popular">Popular</a> |
-                <a id="new" href="/?order_by=new">New</a>      
+                <a href="/?order_by=popular">Popular</a> |
+                <a href="/?order_by=new">New</a>      
             </div>
         </header>
     
         <main>
             <div>
                 {% for news in json_req.hits %}
+
                 <div>
                     <a href="{{news.objectID}}">
                         <h3>{{news.title}}</h3>
@@ -29,10 +30,11 @@
                     {% endif %}
                 </div>
                 
-                <div>
+                <div class="news__info">
                    <p>{{news.points}} Point(s) | By: {{news.author}} | {{news.num_comments}} Comments</p> 
                 </div>
                 <hr />
+
                 {% endfor %}
             </div>
         </main>
